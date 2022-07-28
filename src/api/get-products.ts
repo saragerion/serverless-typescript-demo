@@ -17,6 +17,12 @@ const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPro
     resource_path: event.requestContext.resourcePath
   });
 
+  logger.info('Before adding memberId');
+  logger.addPersistentLogAttributes({ memberId: 'test'  });
+  logger.info('After adding memberId');
+
+  throw new Error();
+
   try {
     const result = await store.getProducts();
 
